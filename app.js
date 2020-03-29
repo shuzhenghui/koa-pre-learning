@@ -13,7 +13,7 @@ app.use(catchError)
 app.use(parser())
 
 // 初始化,将路由api挂载到koa上
-InitManager.initCore(app)
+InitManager.initCore(app) 
 
 
 app.listen(8848, () => {

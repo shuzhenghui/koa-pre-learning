@@ -7,10 +7,13 @@ const router = new Router()
 // const { HttpException } = require('../../../core/http-exception')
 
 
-router.get('/index', (ctx, next) => {
+router.get('/v1/user/index', (ctx, next) => {
 
     // validator(ctx)
-    ctx.body = '121324'
+    ctx.body = {
+        aaa: html,
+        bbb: 'json'
+    }
     // if(true) {
     //     const error = new global.errs.HttpException()
     //     console.log(error)

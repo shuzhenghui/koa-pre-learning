@@ -7,6 +7,7 @@ class HttpException extends Error {
     }
 }
 
+// 参数错误error返回信息
 class paramsException extends HttpException {
     constructor(errorCode = 10000, msg = '参数错误') {
         super()

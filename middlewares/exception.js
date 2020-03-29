@@ -4,7 +4,12 @@ const catchError = async (ctx, next) => {
     try {
         await next()
     } catch (error) {
-        if (error instanceof HttpException) {
+        const isDev = global.config.environment
+        const isHttpException = error instanceof HttpException
+        if (isDev && isHttpException)  throw error
+
+        if (isHttpException) {
+            // 定义的已知错误返回信息
             ctx.body = {
                 msg: error.msg,
                 error_code: error.errorCode,
@@ -14,9 +19,10 @@ const catchError = async (ctx, next) => {
         } else {
             ctx.body = {
                 msg: '未知错误',
-                error_code: 10000,
+                error_code: 99999,
                 request: `${ctx.method}-${ctx.path}`
             }
+            ctx.status = 500
         }
     }
 }

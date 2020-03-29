@@ -9,7 +9,8 @@ class InitManager {
     static initCore(app) {
         InitManager.app = app
         InitManager.initLoadRouters()
-        InitManager.initLoaderException()
+        InitManager.initLoadException()
+        InitManager.loadConfig()
     }
     static initLoadRouters() {
         const apiDirectory = `${process.cwd()}/app/api`
@@ -25,7 +26,12 @@ class InitManager {
             }
         }
     }
-    static initLoaderException() {
+    static loadConfig(path = '') {
+        const configPath = path || process.cwd() + '/config/config.js'
+        const config = require(configPath)
+        global.config = config
+    }
+    static initLoadException() {
         const { HttpException } = require('./http-exception')
         global.errs = HttpException
     }
