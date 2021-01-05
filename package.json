@@ -10,7 +10,7 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"axios": "^0.18.0",
+		"axios": "^0.21.1",
 		"koa": "^2.7.0",
 		"koa-router": "^8.0.8",
 		"require-directory": "^2.1.1",
